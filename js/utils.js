@@ -33,9 +33,15 @@ class BookStorage {
             text += `title: ${book.title}, author: ${book.author}`;
         }
         updateHTML('bookList', text);
+    }
+
+    //TODO
+    searchBooks(title, author) {
 
     }
 }
+
+// TODO homework
 
 class Author {
 
