@@ -1,4 +1,4 @@
-import {getInputValue, updateHTML} from "./utils";
+import {getInputValue, updateHTML} from "./utils.js";
 
 class Book {
     constructor(title, author, publisher, pages, year) {
