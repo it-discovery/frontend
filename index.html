@@ -1,0 +1,61 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Internet shop</title>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <div class="navbar-header">
+            <span class="navbar-brand">Internet Shop</span>
+        </div>
+    </div>
+</nav>
+
+<div class="form-horizontal container">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Books</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Authors</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Publishers</a>
+        </li>
+    </ul>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="inputTitle" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAuthor" class="form-label">Author</label>
+            <input type="text" class="form-control" id="inputAuthor" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputPublisher" class="form-label">Publisher</label>
+            <input type="text" class="form-control" id="inputPublisher">
+        </div>
+        <div class="col-md-4">
+            <label for="inputYear" class="form-label">Year</label>
+            <input type="text" class="form-control" id="inputYear" required>
+        </div>
+        <div class="col-md-2">
+            <label for="inputPages" class="form-label">Pages</label>
+            <input type="text" class="form-control" id="inputPages">
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-primary">Add book</button>
+        </div>
+    </form>
+    <div>
+        Available books:
+    </div>
+</div>
+<div class="form-horizontal"></div>
+
+</body>
+</html>
