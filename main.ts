@@ -17,6 +17,8 @@ class Book {
 }
 
 interface BookStore {
+    type: string;
+
     getBooks(): Book[];
 
     addBook(book: Book): void;
@@ -27,6 +29,8 @@ interface BookStore {
 class InMemoryBookStore implements BookStore {
 
     private readonly books: Book[] = [];
+
+    type = 'In-memory';
 
     getBooks(): Book[] {
         return this.books;
@@ -39,9 +43,6 @@ class InMemoryBookStore implements BookStore {
     search(title?: string | undefined, author?: string | undefined): Book[] {
         return this.books.filter(book => book.match(title, author));
     }
-
-
-
 }
 
 class BookStorage {
