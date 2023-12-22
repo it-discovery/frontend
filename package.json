@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack && concurrently \"webpack --watch\" \"lite-server\"\"",
+    "es-build" : "esbuild main.ts --bundle --minify --outfile=dist/bundle.js",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.2"
+    "bootstrap": "^5.3.2",
+    "esbuild": "^0.19.10"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
