@@ -57,7 +57,7 @@ class BookStorage {
         return this.#instance;
     }
 
-    @logMethod
+    //@logMethod
     addBook(title: string, author: string, publisher: string, pages: number, year: number): void {
         this.bookStore.addBook(new Book(title, author, publisher, pages, year));
     }
