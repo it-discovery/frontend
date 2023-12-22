@@ -1,6 +1,6 @@
 import {getInputValue, updateHTML} from "./js/utils.js";
 
-class Book {
+export class Book {
     constructor(public title: string, public author: string, private publisher: string,
                 private pages: number, private year: number) {
     }
@@ -15,7 +15,7 @@ class Book {
     }
 }
 
-interface BookStore {
+export interface BookStore {
     type: string;
 
     getBooks(): Book[];
@@ -25,7 +25,7 @@ interface BookStore {
     search(title?: string, author?: string): Book[];
 }
 
-class InMemoryBookStore implements BookStore {
+export class InMemoryBookStore implements BookStore {
 
     private readonly books: Book[] = [];
 
