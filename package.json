@@ -7,7 +7,7 @@
     "start": "webpack && concurrently \"webpack --watch\" \"lite-server\"\"",
     "es-build": "esbuild main.ts --bundle --minify --outfile=dist/bundle.js",
     "vite-build": "tsc && vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +17,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.11",
     "babel-jest": "^29.7.0",
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.1.1",
     "ts-loader": "^9.5.1",

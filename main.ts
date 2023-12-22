@@ -44,7 +44,7 @@ export class InMemoryBookStore implements BookStore {
     }
 }
 
-class BookStorage {
+export class BookStorage {
     static #instance: BookStorage;
 
     private readonly bookStore: BookStore = new InMemoryBookStore();
