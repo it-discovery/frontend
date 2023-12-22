@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && lite-server",
+    "start": "webpack && concurrently \"webpack --watch\" \"lite-server\"\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
