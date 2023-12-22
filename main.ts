@@ -1,33 +1,30 @@
+// @ts-ignore
 import {getInputValue, updateHTML} from "./js/utils.js";
 
 class Book {
-    constructor(private title, private author, private publisher, private pages, private year) {
-        // this.title = title;
-        // this.author = author;
-        // this.publisher = publisher;
-        // this.pages = pages;
-        // this.year = year;
+    constructor(public title: string, public author: string, private publisher: string,
+                private pages: number, private year: number) {
     }
 }
 
 class BookStorage {
-    static #instance;
+    static #instance: BookStorage;
 
-    books = [];
+    books: Book[] = [];
 
     static {
         this.#instance = new BookStorage();
     }
 
-    static getInstance() {
+    static getInstance(): BookStorage {
         return this.#instance;
     }
 
-    addBook(title, author, publisher, pages, year) {
+    addBook(title: string, author: string, publisher: string, pages: number, year: number): void {
         this.books.push(new Book(title, author, publisher, pages, year));
     }
 
-    displayBooks() {
+    displayBooks(): void {
         let text = '';
         for (let book of this.books) {
             text += `title: ${book.title}, author: ${book.author}`;
@@ -36,7 +33,7 @@ class BookStorage {
     }
 
     //TODO
-    searchBooks(title, author) {
+    searchBooks(title: string, author: string) {
 
     }
 }
@@ -59,7 +56,7 @@ class User {
 
 }
 
-document.getElementById('addBook').addEventListener('click', () => {
+document.getElementById('addBook')?.addEventListener('click', () => {
     const title = getInputValue('inputTitle');
     const publisher = getInputValue('inputPublisher');
     const pages = getInputValue('inputPages');
