@@ -57,6 +57,7 @@ class BookStorage {
         return this.#instance;
     }
 
+    @logMethod
     addBook(title: string, author: string, publisher: string, pages: number, year: number): void {
         this.bookStore.addBook(new Book(title, author, publisher, pages, year));
     }
@@ -113,3 +114,15 @@ document.getElementById('addBook')?.addEventListener('click', () => {
     BookStorage.getInstance().addBook(title, author, publisher, pages, year);
     BookStorage.getInstance().displayBooks();
 });
+
+function logMethod(originalMethod: any, context: ClassMethodDecoratorContext) {
+
+    const methodName = String(context.name);
+
+    function addLogging(this: any, args: any[]) {
+        console.log(`Entered method: ${methodName}`);
+        const result = originalMethod.call(this, ...args);
+        console.log(`Finished method: ${methodName}`);
+        return result;
+    }
+}
