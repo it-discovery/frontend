@@ -5,12 +5,49 @@ class Book {
     constructor(public title: string, public author: string, private publisher: string,
                 private pages: number, private year: number) {
     }
+
+    match(title?: string, author?: string): boolean {
+        //TODO implement
+        return true;
+    }
+
+    getGeneralInformation() : string {
+        return `title: ${this.title}, author: ${this.author}`;
+    }
+}
+
+interface BookStore {
+    getBooks(): Book[];
+
+    addBook(book: Book): void;
+
+    search(title?: string, author?: string): Book[];
+}
+
+class InMemoryBookStore implements BookStore {
+
+    private readonly books: Book[] = [];
+
+    getBooks(): Book[] {
+        return this.books;
+    }
+
+    addBook(book: Book): void {
+        this.books.push(book);
+    }
+
+    search(title?: string | undefined, author?: string | undefined): Book[] {
+        return this.books.filter(book => book.match(title, author));
+    }
+
+
+
 }
 
 class BookStorage {
     static #instance: BookStorage;
 
-    books: Book[] = [];
+    private readonly bookStore: BookStore = new InMemoryBookStore();
 
     static {
         this.#instance = new BookStorage();
@@ -21,27 +58,34 @@ class BookStorage {
     }
 
     addBook(title: string, author: string, publisher: string, pages: number, year: number): void {
-        this.books.push(new Book(title, author, publisher, pages, year));
+        this.bookStore.addBook(new Book(title, author, publisher, pages, year));
     }
 
     displayBooks(): void {
         let text = '';
-        for (let book of this.books) {
-            text += `title: ${book.title}, author: ${book.author}`;
+        for (let book of this.bookStore.getBooks()) {
+            text += book.getGeneralInformation();
         }
         updateHTML('bookList', text);
     }
 
-    //TODO
-    searchBooks(title: string, author: string) {
-
+    searchBooks(title?: string, author?: string): Book[] {
+        return this.bookStore.search(title, author);
     }
 }
 
 // TODO homework
 
-class Author {
+abstract class Human {
+    protected constructor(private name: string, private birthDate: Date) {
+    }
+}
 
+class Author extends Human {
+
+    constructor(private books: Book[], name: string, birthDate: Date) {
+        super(name, birthDate);
+    }
 }
 
 class Order {
@@ -52,8 +96,11 @@ class Publisher {
 
 }
 
-class User {
+class User extends Human {
 
+    constructor(private orders: Order[], name: string, birthDate: Date) {
+        super(name, birthDate);
+    }
 }
 
 document.getElementById('addBook')?.addEventListener('click', () => {
