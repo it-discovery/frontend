@@ -1,4 +1,3 @@
-// @ts-ignore
 import {getInputValue, updateHTML} from "./js/utils.js";
 
 class Book {
@@ -107,9 +106,9 @@ class User extends Human {
 document.getElementById('addBook')?.addEventListener('click', () => {
     const title = getInputValue('inputTitle');
     const publisher = getInputValue('inputPublisher');
-    const pages = getInputValue('inputPages');
+    const pages = Number(getInputValue('inputPages'));
     const author = getInputValue('inputAuthor');
-    const year = getInputValue('inputYear');
+    const year = Number(getInputValue('inputYear'));
 
     BookStorage.getInstance().addBook(title, author, publisher, pages, year);
     BookStorage.getInstance().displayBooks();
